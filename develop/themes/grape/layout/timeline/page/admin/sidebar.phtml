@@ -1,0 +1,35 @@
+<div class="float-left span25">
+    <div class="list-wrapper">
+        <a class="list-column column-hover" href="{{TIMELINE_URL}}" data-href="?tab1=timeline&id={{TIMELINE_USERNAME}}" align="center">
+            {{TIMELINE_NAME}}
+        </a>
+    </div>
+    
+    <div class="list-wrapper">
+        <div class="list-header">
+            @menu_label@
+        </div>
+        
+        <a class="list-column column-hover" href="{{GENERAL_SETTINGS_URL}}" data-href="?tab1=timeline&tab2=settings&tab3=general_settings&id={{TIMELINE_USERNAME}}">
+            @general_settings_label@
+        </a>
+        
+        <a class="list-column column-hover" href="{{PRIVACY_SETTINGS_URL}}" data-href="?tab1=timeline&tab2=settings&tab3=privacy&id={{TIMELINE_USERNAME}}">
+            @privacy_settings_label@
+        </a>
+        
+        {{ADMIN_SETTINGS_LINK}}
+        
+        <a class="list-column column-hover" href="{{MESSAGES_SETTINGS_URL}}" data-href="?tab1=timeline&tab2=settings&tab3=messages&id={{TIMELINE_USERNAME}}">
+            @messages_label@
+
+            <span class="update-alert">
+                {{MESSAGES_COUNT}}
+            </span>
+        </a>
+        
+        <a class="list-column column-hover" href="{{LIKES_SETTINGS_URL}}" data-href="?tab1=timeline&tab2=settings&tab3=likes&id={{TIMELINE_USERNAME}}">
+            @pages_likes_label@
+        </a>
+    </div>
+</div>

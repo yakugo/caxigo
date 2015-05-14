@@ -1,0 +1,189 @@
+<div class="page-margin"></div>
+<div class="float-left span60 desktop-only">
+    <h1>Welcome to <?php echo $sk['config']['site_name']; ?></h1>
+    
+    <div class="wc-feat-float">
+        <i class="icon-group" style="font-size: 50px;"></i>
+        <div class="feat-msg">
+            <strong><?php echo $lang['site_description']; ?></strong>
+            <p>
+                Never miss a thing out! Keep in touch with your fans, customers or loved ones all the time!
+            </p>
+        </div>
+        <div class="float-clear"></div>
+    </div>
+
+    <div class="wc-feat-float">
+        <i class="icon-tablet" style="font-size: 80px;"></i>
+        <div class="feat-msg">
+            <strong><?php echo $lang['go_mobile_description']; ?></strong>
+            <p>
+                <?php echo $lang['go_mobile_description_paragraph']; ?>
+            </p>
+        </div>
+        <div class="float-clear"></div>
+    </div>
+
+    <div class="wc-feat-float">
+        <i class="icon-globe" style="font-size: 70px;"></i>
+        <div class="feat-msg">
+            <strong><?php echo $lang['trending_description']; ?></strong>
+            <p>
+                <?php echo $lang['trending_description_paragraph']; ?>
+            </p>
+        </div>
+        <div class="float-clear"></div>
+    </div>
+</div>
+<div class="float-right span35">
+    <?php
+    if (isset($_GET['tab2']) && $_GET['tab2'] == "password_reset") {
+        
+        if (isset($_GET['id']) && SK_isValidPasswordResetToken($_GET['id']) != false) {
+    ?>
+    <form class="welcome-form passwordreset-form" method="post">
+        <div class="form-header">
+            <?php echo $lang['reset_password_label']; ?>
+        </div>
+        <div class="form-content">
+            <div class="input-wrapper">
+                <input type="text" name="pr_password" placeholder="<?php echo $lang['new_password_label']; ?>" autocomplete="off">
+            </div>
+            <button class="submit-btn active">
+                <i class="icon-signin progress-icon"></i> <?php echo $lang['reset']; ?>
+            </button>
+        </div>
+        <input type="hidden" name="pr_token" value="<?php echo $_GET['id']; ?>">
+    </form>
+    <?php
+        } else {
+    ?>
+    <div class="welcome-form">
+        <div class="form-header">
+            Oops!
+        </div>
+        <div class="post-message">Invalid token!</div>
+    </div>
+    <?php
+        }
+    } else {
+    ?>
+    <?php
+    if (isset($_GET['tab2']) && $_GET['tab2'] == "forgot_password") {
+    ?>
+    <form class="welcome-form forgotpass-form" method="post">
+        <div class="form-header">
+            <div class="float-left">
+                <?php echo $lang['forgot_password']; ?>?
+            </div>
+            <div class="float-right">
+                <a href="<?php echo SK_smoothLink('index.php?tab1=welcome'); ?>"><?php echo $lang['log_in']; ?></a>
+            </div>
+            <div class="float-clear"></div>
+        </div>
+        <div class="form-content">
+            <div class="input-wrapper">
+                <input type="text" name="forgotpass_id" value="<?php echo $lang['login_id_label']; ?>" placeholder="<?php echo $lang['login_id_label']; ?>" data-placeholder="<?php echo $lang['login_id_label']; ?>" autocomplete="off">
+            </div>
+            <button class="submit-btn active">
+                <i class="icon-inbox progress-icon"></i> <?php echo $lang['reset_password_reset']; ?>
+            </button>
+        </div>
+    </form>
+    <?php
+    } else {
+    ?>
+    <form class="welcome-form login-form" method="post">
+        <div class="form-header">
+            <div class="float-left">
+                <?php echo $lang['log_in']; ?>
+            </div>
+            <div class="float-right">
+                <a href="<?php echo SK_smoothLink('index.php?tab1=welcome&tab2=forgot_password'); ?>"><?php echo $lang['forgot_password']; ?>?</a>
+            </div>
+            <div class="float-clear"></div>
+        </div>
+        <div class="form-content">
+            <div class="input-wrapper">
+                <input type="text" name="login_id" value="<?php echo $lang['login_id_label']; ?>" placeholder="<?php echo $lang['login_id_label']; ?>" data-placeholder="<?php echo $lang['login_id_label']; ?>" autocomplete="off">
+            </div>
+            
+            <div class="input-wrapper">
+                <input type="password" name="login_password" placeholder="Password" autocomplete="off">
+            </div>
+            
+            <div class="input-wrapper">
+                <input type="checkbox" name="keep_logged_in" value="1"> Keep me logged in
+            </div>
+            
+            <button class="submit-btn active"><i class="icon-signin progress-icon"></i> <?php echo $lang['log_in']; ?></button>
+        </div>
+    </form>
+    <?php
+    }
+    ?>
+    <form class="welcome-form signup-form" method="post">
+        <div class="form-header"><?php echo $lang['sign_up_label']; ?></div>
+        <div class="form-content">
+            <div class="input-wrapper">
+                <input type="text" value="<?php echo $lang['fullname_label']; ?>" placeholder="<?php echo $lang['fullname_label']; ?>" data-placeholder="<?php echo $lang['fullname_label']; ?>" autocomplete="off" data-copy-to=".register-name-input">
+                <input class="register-name-input" type="hidden" name="name">
+            </div>
+            
+            <div class="input-wrapper">
+                <input type="text" value="<?php echo $lang['username_label']; ?>" placeholder="<?php echo $lang['username_label']; ?>" data-placeholder="<?php echo $lang['username_label']; ?>" onkeyup="SK_checkUsername(this.value,0,'.check-username-result',false);" autocomplete="off" data-copy-to=".register-username-input">
+                <input class="register-username-input" type="hidden" name="username">
+                <div class="check-username-result"></div>
+            </div>
+            
+            <div class="input-wrapper">
+                <input type="password" name="password" placeholder="<?php echo $lang['password_label']; ?>" autocomplete="off">
+            </div>
+            
+            <div class="input-wrapper">
+                <input type="text" value="<?php echo $lang['email_label']; ?>" placeholder="<?php echo $lang['email_label']; ?>" data-placeholder="<?php echo $lang['email_label']; ?>" autocomplete="off" data-copy-to=".register-email-input">
+                <input class="register-email-input" type="hidden" name="email">
+            </div>
+            
+            <div class="input-wrapper">
+                <select name="gender">
+                    <option value=""><?php echo $lang['gender_label']; ?></option>
+                    <option value="male"><?php echo $lang['gender_male_label']; ?></option>
+                    <option value="female"><?php echo $lang['gender_female_label']; ?></option>
+                </select>
+            </div>
+            
+            <?php
+            if ($sk['config']['captcha'] == true) {
+            $captcha = SK_createCaptcha();
+            ?>
+            <div class="input-wrapper">
+                <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="85px" align="left" valign="middle">
+                        <img class="captcha" src="<?php echo $sk['config']['site_url'] . '/' . $captcha['image']; ?>">
+                    </td>
+                    <td align="left" valign="middle">
+                        <input type="text" value="<?php echo $lang['captcha_label']; ?>" placeholder="<?php echo $lang['captcha_label']; ?>" data-placeholder="<?php echo $lang['captcha_label']; ?>" autocomplete="off" data-copy-to=".register-captcha-input">
+                        <input class="register-captcha-input" type="hidden" name="captcha">
+                    </td>
+                </tr>
+                </table>
+            </div>
+            <?php } ?>
+            
+            <button class="submit-btn active"><i class="icon-angle-right progress-icon"></i> <?php echo $lang['sign_up_label'] ;?></button>
+        </div>
+    </form>
+    <?php
+    }
+    ?>
+    <div class="fb-button">
+        <a href="<?php echo $sk['fb_login_url']; ?>">
+            <i class="icon-facebook"></i>
+            <span>Connect with Facebook</span>
+        </a>
+    </div>
+</div>
+
+<div class="float-clear"></div>

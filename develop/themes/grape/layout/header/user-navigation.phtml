@@ -1,0 +1,39 @@
+<a class="header-nav float-left" href="{{HOME_PAGE_URL}}" title="@home_label@" data-href="?tab1=home">
+    <i class="icon icon-home"></i>
+</a>
+
+<a class="notification-nav header-nav float-left" title="@notification_label@" onclick="SK_openNotifications();">
+    <i class="icon icon-globe"></i>
+    <span class="new-update-alert">
+        {{NOTIF_NUM}}
+    </span>
+</a>
+
+<a class="message-nav header-nav float-left" href="{{MESSAGES_PAGE_URL}}" title="@message_label@" data-href="?tab1=messages">
+    <i class="icon icon-comments"></i>
+    <span class="new-update-alert">
+        {{MESSAGES_NUM}}
+    </span>
+</a>
+
+<a class="followers-nav header-nav float-left" href="{{FOLLOWING_PAGE_URL}}" title="{{FOLLOWING_LABEL}}" data-href="{{FOLLOWING_PAGE_URL_SMOOTHLESS}}">
+    <i class="icon icon-group"></i>
+    <span class="new-update-alert">
+        {{FOLLOW_REQUESTS_NUM}}
+    </span>
+</a>
+
+<a class="manager-nav header-nav float-left" href="{{MORE_PAGE_URL}}" title="@my_pages_groups_label@" data-href="?tab1=more">
+    <i class="icon icon-reorder"></i>
+</a>
+
+<div class="header-user-info float-left cursor-hand" style="position: relative;">
+    <a class="header-user-link" href="{{USER_URL}}" data-href="?tab1=timeline&id={{USER_USERNAME}}">
+        <img class="header-user-avatar" src="{{USER_THUMBNAIL_URL}}" width="24px" alt="{{USER_NAME}}">
+        <strong>{{USER_FIRST_NAME}}</strong>
+    </a>
+    <i class="icon-caret-down dropdown-icon"></i>
+    <span class="dropdown-overlay-wrap" onclick="SK_moreToggle();"></span>
+</div>
+
+<div class="float-clear"></div>

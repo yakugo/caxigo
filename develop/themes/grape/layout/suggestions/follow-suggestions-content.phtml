@@ -1,0 +1,36 @@
+<div class="list-wrapper suggestions-wrapper">
+    <div class="list-header">
+        <div class="float-left">
+            @follow_suggestions_label@
+        </div>
+
+        <div class="float-right">
+            <span class="cursor-hand" onclick="refreshFollowSuggestions();" title="@refresh_label@">
+                <i class="icon-repeat progress-icon"></i> 
+                @refresh_label@
+            </span>
+        </div>
+
+        <div class="float-clear"></div>
+    </div>
+
+    <div class="suggestions-content">
+        {{LIST_SUGGESTIONS}}
+    </div>
+</div>
+
+<script>
+function refreshFollowSuggestions() {
+    
+    SK_progressIconLoader($('.suggestions-wrapper').find('.list-header'));
+    
+    $.get(SK_source(), {t: 'search', a: 'suggestions'}, function (data) {
+        
+        if (data.status == 200) {
+            $('.suggestions-content').html(data.html);
+        }
+        
+        SK_progressIconLoader($('.suggestions-wrapper'));
+    });
+}
+</script>
